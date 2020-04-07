@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom";
-require('../scss/main.scss')
+require('../scss/main.scss');
 
 
 // const Pko = () => {
@@ -21,6 +21,22 @@ require('../scss/main.scss')
 //     )
 // };
 
+const Header = () => {
+    const [date, setDate] = useState(new Date());
+
+    useEffect(() => {
+        setInterval(() => {
+            setDate(new Date())
+        }, 1000)
+    }, []);
+
+    return (
+        <>
+            <div style={{fontSize:'24px'}}> {date.toLocaleDateString()}**************{date.toLocaleTimeString()}</div>
+
+        </>
+    )
+}
 const NbpToday = () => {
     const [currency, setCurrency] = useState([]);
     const loadCurrency = () => {
@@ -195,7 +211,7 @@ const NbpTodayEur = () => {
 };
 const App=()=>{
     return(
-        <><NbpTodayUsd/> <MonthUsd/><NbpTodayChf/> <MonthChf/> <NbpTodayEur/><MonthEur/> <NbpToday/></>
+        <> <Header/><NbpTodayUsd/> <MonthUsd/><NbpTodayChf/> <MonthChf/> <NbpTodayEur/><MonthEur/> <NbpToday/></>
     )
 };
 
