@@ -1,7 +1,38 @@
-.chf {
-  background-color: #0f7595;
-  color:white;
+body {
+  background-color: lightgrey;
 }
-body{
-  background-color:lightgrey;
+
+//.chf {
+//  background-color: #0f7595;
+//  color: white;
+//}
+//
+//.usd {
+//  background-color: #25958f;
+//  color: white;
+//}
+//
+//.eur {
+//  background-color: #956bff;
+//  color: white;
+//}
+.today{
+  text-align: left;
+}
+
+.columns {
+  display: flex;
+  justify-content: space-around;
+  background-color: #264c95;
+  color: white;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  margin: 30px;
+}
+.textArea{
+  width: 97.5vw;
+  height: 200px;
 }
