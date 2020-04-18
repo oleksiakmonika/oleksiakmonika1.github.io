@@ -144,7 +144,7 @@ const MonthCurrency = () => {
     const [currency2, setCurrency2] = useState([]);
 
     const loadCurrency = () => {
-        fetch("http://api.nbp.pl/api/exchangerates/rates/a/usd/last/30/", {
+        fetch("https://api.nbp.pl/api/exchangerates/rates/a/usd/last/30/", {
             method: "GET"
         })
             .then(res => res.json())
@@ -153,7 +153,7 @@ const MonthCurrency = () => {
     };
 
     const loadCurrency1 = () => {
-        fetch("http://api.nbp.pl/api/exchangerates/rates/a/eur/last/30/", {
+        fetch("https://api.nbp.pl/api/exchangerates/rates/a/eur/last/30/", {
             method: "GET"
         })
             .then(res => res.json())
@@ -162,7 +162,7 @@ const MonthCurrency = () => {
     };
 
     const loadCurrency2 = () => {
-        fetch("http://api.nbp.pl/api/exchangerates/rates/a/chf/last/30/", {
+        fetch("https://api.nbp.pl/api/exchangerates/rates/a/chf/last/30/", {
             method: "GET"
         })
             .then(res => res.json())
@@ -253,7 +253,7 @@ const Notes = () => {
 const NbpToday = () => {
     const [currency, setCurrency] = useState([]);
     const loadCurrency = () => {
-        fetch("http://api.nbp.pl/api/exchangerates/tables/a/", {
+        fetch("https://api.nbp.pl/api/exchangerates/tables/a/", {
             method: "GET"
         })
             .then(res => res.json())
