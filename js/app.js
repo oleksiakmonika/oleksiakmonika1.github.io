@@ -64,7 +64,7 @@ const NbpTodayUsdChfEur = () => {
     const [currency2, setCurrency2] = useState(' ');
 
     const loadCurrency = () => {
-        fetch("http://api.nbp.pl/api/exchangerates/rates/a/usd/today/", {
+        fetch("https://api.nbp.pl/api/exchangerates/rates/a/usd/today/", {
             method: "GET"
         })
             .then(res => {
@@ -79,7 +79,7 @@ const NbpTodayUsdChfEur = () => {
     };
 
     const loadCurrency1 = () => {
-        fetch("http://api.nbp.pl/api/exchangerates/rates/a/chf/today/", {
+        fetch("https://api.nbp.pl/api/exchangerates/rates/a/chf/today/", {
             method: "GET"
         })
             .then(res => {
@@ -94,7 +94,7 @@ const NbpTodayUsdChfEur = () => {
     };
 
     const loadCurrency2 = () => {
-        fetch("http://api.nbp.pl/api/exchangerates/rates/a/eur/today/", {
+        fetch("https://api.nbp.pl/api/exchangerates/rates/a/eur/today/", {
             method: "GET"
         })
             .then(res => {
