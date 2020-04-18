@@ -116,19 +116,19 @@ const NbpTodayUsdChfEur = () => {
         <div className='columns'>
             <div className='usd'>
                 <h2 style={{height: "50px", width: "300px", textAlign: 'right'}}>
-                    Kurs USD z dziś {currency} {(currency) == null ? "nie został (jeszcze) podany" : "zł"}
+                    Kurs USD z dziś {currency} {currency !== null ? "nie został (jeszcze) podany" : "zł"}
                     {/*Kurs USD z dziś {currency} zł*/}
                 </h2>
             </div>
             <div className='chf'>
                 <h2 style={{height: "50px", width: "300px", textAlign: 'right'}}>
-                    Kurs CHF z dziś {currency1} {(currency1) == null ? "nie został (jeszcze) podany" : "zł"}
+                    Kurs CHF z dziś {currency1} {currency1 !== null ? "nie został (jeszcze) podany" : "zł"}
                     {/*Kurs CHF z dziś {currency1} zł*/}
                 </h2>
             </div>
             <div className='eur'>
                 <h2 style={{height: "50px", width: "300px", textAlign: 'right'}}>
-                    Kurs EUR z dziś {currency2} {(currency2) == null ? "nie został (jeszcze) podany" : "zł"}
+                    Kurs EUR z dziś {currency2} {currency2 !== null ? "nie został (jeszcze) podany" : "zł"}
                     {/*Kurs EUR z dziś {currency2} zł*/}
                 </h2>
             </div>
