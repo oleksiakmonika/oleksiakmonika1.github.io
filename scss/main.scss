@@ -20,9 +20,7 @@ body {
 //  color: white;
 //}
 .today{
-  text-align: left;
   background-color:#264c95 ;
-  width: 600px;
   color: white;
 }
 
@@ -51,4 +49,8 @@ li:nth-child(2n+1){
 }
 .pairs{
   display: flex;
+}
+.wykres{
+  display: flex;
+  justify-content: center;
 }

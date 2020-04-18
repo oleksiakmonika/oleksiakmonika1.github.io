@@ -2,44 +2,7 @@ import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom";
 import {Bar, Line} from 'react-chartjs-2'
 require('../scss/main.scss');
-const ChartData = () => {
-    const [chartData, setChartData] = useState({});
-    const chart = () => {
-        setChartData({
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: 'Wartość walut',
-                data: [12, 19, 3, 5, 2, 50],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        })
-    }
-    useEffect(() => {
-        chart()
-    }, [])
 
-    return (
-        <div>
-            <Bar data={chartData}/>
-        </div>
-    );
-};
 
 
 const Header = () => {
@@ -51,6 +14,7 @@ const Header = () => {
     }, []);
 
     return (
+
         <div className='header'>
             <div style={{fontSize: '24px'}}> {date.toLocaleDateString()}</div>
             <div style={{fontSize: '24px'}}> {date.toLocaleTimeString()}</div>
@@ -79,7 +43,7 @@ const NbpTodayUsdChfEur = () => {
     };
 
     const loadCurrency1 = () => {
-        fetch("https://api.nbp.pl/api/exchangerates/rates/a/chf/today/", {
+        fetch("https://api.nbp.pl/api/exchangerates/rates/a/chf/", {
             method: "GET"
         })
             .then(res => {
@@ -115,33 +79,109 @@ const NbpTodayUsdChfEur = () => {
     return (
         <div className='columns'>
             <div className='usd'>
-                <h2 style={{height: "50px", width: "300px", textAlign: 'right'}}>
-                    Kurs USD z dziś {currency} {currency !== null ? "nie został (jeszcze) podany" : "zł"}
+
+                <h2 style={{ width: "300px", marginLeft:'50px'}}>
+                    Kurs USD z dziś {currency} {currency !== null ? "nie podano" : "zł"}
                     {/*Kurs USD z dziś {currency} zł*/}
                 </h2>
+                <p style={{fontSize:'10px', marginLeft:'50px'}}>Kurs jest wyświetlany w dni robocze</p>
+
             </div>
             <div className='chf'>
-                <h2 style={{height: "50px", width: "300px", textAlign: 'right'}}>
-                    Kurs CHF z dziś {currency1} {currency1 !== null ? "nie został (jeszcze) podany" : "zł"}
-                    {/*Kurs CHF z dziś {currency1} zł*/}
+                <h2 style={{ width: "300px", marginLeft:'50px'}}>
+                    Kurs CHF z dziś {currency} {currency !== null ? "nie podano" : "zł"}
+                    {/*Kurs USD z dziś {currency} zł*/}
                 </h2>
+                <p style={{fontSize:'10px', marginLeft:'50px'}}>Kurs jest wyświetlany w dni robocze</p>
             </div>
             <div className='eur'>
-                <h2 style={{height: "50px", width: "300px", textAlign: 'right'}}>
-                    Kurs EUR z dziś {currency2} {currency2 !== null ? "nie został (jeszcze) podany" : "zł"}
-                    {/*Kurs EUR z dziś {currency2} zł*/}
+                <h2 style={{ width: "300px", marginLeft:'50px'}}>
+                    Kurs CHF z dziś {currency} {currency !== null ? "nie podano" : "zł"}
+                    {/*Kurs USD z dziś {currency} zł*/}
                 </h2>
+                <p style={{fontSize:'10px', marginLeft:'50px'}}>Kurs jest wyświetlany w dni robocze</p>
             </div>
         </div>
     );
 };
 
-
 const MonthCurrency = () => {
-
     const [currency, setCurrency] = useState([]);
     const [currency1, setCurrency1] = useState([]);
     const [currency2, setCurrency2] = useState([]);
+    const [chartData, setChartData] = useState({});
+    const [chartData1, setChartData1] = useState({});
+    const [chartData2, setChartData2] = useState({});
+    let arrName = [];
+    let arrCurrency = []
+    const chart = () => {
+
+        fetch("https://api.nbp.pl/api/exchangerates/rates/a/usd/last/30/", {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(res => {
+                for (const el of res.rates) {
+                    arrName.push(el.effectiveDate);
+                    arrCurrency.push(el.mid)
+                }
+                setChartData({
+                    labels: arrName,
+                    datasets: [{
+                        label: 'Zmiana kursu USD w ostatnich 30 dniach roboczych',
+                        data: arrCurrency,
+                        backgroundColor: ['rgba(80,150,217,0.2)'],
+                        borderWidth: 1
+                    }]
+                })
+            })
+            .catch(error => console.log(error))
+    };
+    const chart1 = () => {
+
+        fetch("https://api.nbp.pl/api/exchangerates/rates/a/chf/last/30/", {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(res => {
+                for (const el of res.rates) {
+                    arrName.push(el.effectiveDate);
+                    arrCurrency.push(el.mid)
+                }
+                setChartData1({
+                    labels: arrName,
+                    datasets: [{
+                        label: 'Zmiana kursu CHF w ostatnich 30 dniach roboczych',
+                        data: arrCurrency,
+                        backgroundColor: ['rgba(80,150,217,0.2)'],
+                        borderWidth: 1
+                    }]
+                })
+            })
+            .catch(error => console.log(error))
+    };
+    const chart2 = () => {
+        fetch("https://api.nbp.pl/api/exchangerates/rates/a/eur/last/30/", {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(res => {
+                for (const el of res.rates) {
+                    arrName.push(el.effectiveDate);
+                    arrCurrency.push(el.mid)
+                }
+                setChartData2({
+                    labels: arrName,
+                    datasets: [{
+                        label: 'Zmiana kursu Eur w ostatnich 30 dniach roboczych',
+                        data: arrCurrency,
+                        backgroundColor: ['rgba(80,150,217,0.2)'],
+                        borderWidth: 1
+                    }]
+                })
+            })
+            .catch(error => console.log(error))
+    };
 
     const loadCurrency = () => {
         fetch("https://api.nbp.pl/api/exchangerates/rates/a/usd/last/30/", {
@@ -171,27 +211,28 @@ const MonthCurrency = () => {
     };
 
     useEffect(() => {
-        loadCurrency2(), loadCurrency1(), loadCurrency()
+        loadCurrency2(), loadCurrency1(), loadCurrency(), chart(), chart1(), chart2()
     }, []);
 
     return (
         <div className='columns'>
-            <div><h3 className='usd'>Średni kurs NBP z ostatnich 30 dni</h3>
-
+            <div><h2 style={{ marginLeft:'100px'}} className='usd'>Średni kurs NBP z ostatnich 30 dni</h2>
                 <ul>
                     {
                         currency.map((e, i) => {
                             return <li className='usd' style={{
                                 listStyleType: "none", paddingLeft: '10px'
                             }}
-                                       key={i}>Dnia {e.effectiveDate}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {e.mid} zł </li>
+                                       key={i}>Dnia {e.effectiveDate}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{e.mid} zł </li>
                         })
                     }
                 </ul>
-
+                <div style={{background:'lightgrey', margin:'50px', padding:'20px', marginLeft:'80px'}}>
+                    <Line data={chartData}/>
+                </div>
             </div>
             <div>
-                <h3 className='chf'>Średni kurs NBP z ostatnich 30 dni</h3>
+                <h2  style={{ marginLeft:'100px'}} className='chf'>Średni kurs NBP z ostatnich 30 dni</h2>
 
                 <ul>
                     {
@@ -203,10 +244,12 @@ const MonthCurrency = () => {
                         })
                     }
                 </ul>
-
+                <div style={{background:'lightgrey', margin:'50px', padding:'20px', marginLeft:'80px'}}>
+                    <Line data={chartData1}/>
+                </div>
             </div>
             <div>
-                <h3 className='eur'>Średni kurs NBP z ostatnich 30 dni</h3>
+                <h2 style={{ marginLeft:'100px'}}  className='eur'>Średni kurs NBP z ostatnich 30 dni</h2>
 
                 <ul>
                     {
@@ -218,10 +261,15 @@ const MonthCurrency = () => {
                         })
                     }
                 </ul>
+                <div style={{background:'lightgrey', margin:'50px', padding:'20px', marginLeft:'80px'}}>
+                    <Line data={chartData2}/>
+                </div>
             </div>
         </div>
     )
 };
+
+
 const Notes = () => {
     function useLocalState(localItem) {
         const [loc, setSate] = useState(localStorage.getItem(localItem));
@@ -240,7 +288,7 @@ const Notes = () => {
         <form className='form' onSubmit={e => e.preventDefault()}>
             <p>Sporządź notatkę: </p>
             <span>
-                <textarea style={{background: 'lightgrey', border: 'none'}} className='textArea'
+                <textarea style={{background: 'rgba(211, 211, 211, 0.09)', border: 'none'}} className='textArea'
                           onChange={e => setMyText(e.currentTarget.value)} type='text'
                           value={myText} placeholder='Sporządź notatkę...'/><br/>
                 <button style={{background: "dogerblue"}} onClick={e => setMyText(' ')}>Wyczyść notatkę</button>
@@ -249,9 +297,11 @@ const Notes = () => {
         </form>
     )
 }
-
 const NbpToday = () => {
     const [currency, setCurrency] = useState([]);
+    const [chartData, setChartData] = useState({});
+    let arrName = [];
+    let arrCurrency = [];
     const loadCurrency = () => {
         fetch("https://api.nbp.pl/api/exchangerates/tables/a/", {
             method: "GET"
@@ -260,12 +310,36 @@ const NbpToday = () => {
             .then(res => setCurrency(res[0].rates))
             .catch(error => console.log(error))
     };
+    const chart = () => {
+
+        fetch("https://api.nbp.pl/api/exchangerates/tables/a/", {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(res => {
+                for (const el of res[0].rates) {
+                    arrName.push(el.code);
+                    arrCurrency.push(el.mid)
+                }
+                setChartData({
+                    labels: arrName,
+                    datasets: [{
+                        label: 'Aktualnie obowiązujący kurs walut obcych',
+                        data: arrCurrency,
+                        backgroundColor: 'rgba(80,150,217,0.2)',
+                        borderWidth: 1
+                    }]
+                })
+            })
+            .catch(error => console.log(error))
+    };
     useEffect(() => {
-        loadCurrency()
+       loadCurrency(), chart()
     }, []);
 
     return (
-        <div className='today'><h3>Średni kurs walut NBP z dnia dzisiejszego</h3>
+        <div className='today'><h2 style={{padding:'20px', textAlign:'center'}}>Aktualnie obowiązujący kurs średni walut</h2>
+            <div className='columns'>
             <div className='pairs'>
                 <ul>
                     {currency.map((e, i) => {
@@ -297,7 +371,12 @@ const NbpToday = () => {
                     })
                     }
                 </ul>
+
             </div>
+            <div className='wykres' style={{background:'lightgrey', margin:'50px', padding:'20px', marginLeft:'80px', height:'250px', width:'500px',marginTop:'200px'}}>
+                <Bar data={chartData}/>
+            </div>
+                </div>
         </div>
     )
 };
@@ -320,7 +399,7 @@ const Pko = () => {
     }, []);
 
     return (
-        <div><h3>z PKO BP</h3>
+        <div><h3>dane z PKO BP</h3>
 
             <h2> {Object.keys(currency)[0]}</h2>
             <ul>
@@ -349,13 +428,107 @@ const Pko1 = () => {
         });
     return (
         <>
-            <h1>_________________________________________________________________ </h1>
+            <h1>.</h1>
         </>
     )
 };
+// const ChartData = () => {
+//     const [chartData, setChartData] = useState({});
+//     const chart = () => {
+//         setChartData({
+//             labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+//             datasets: [{
+//                 label: 'Wartość walut',
+//                 data: [12, 19, 3, 5, 2, 50],
+//                 backgroundColor: [
+//                     'rgba(255, 99, 132, 0.2)',
+//                     'rgba(54, 162, 235, 0.2)',
+//                     'rgba(255, 206, 86, 0.2)',
+//                     'rgba(75, 192, 192, 0.2)',
+//                     'rgba(153, 102, 255, 0.2)',
+//                     'rgba(255, 159, 64, 0.2)'
+//                 ],
+//                 borderColor: [
+//                     'rgba(255, 99, 132, 1)',
+//                     'rgba(54, 162, 235, 1)',
+//                     'rgba(255, 206, 86, 1)',
+//                     'rgba(75, 192, 192, 1)',
+//                     'rgba(153, 102, 255, 1)',
+//                     'rgba(255, 159, 64, 1)'
+//                 ],
+//                 borderWidth: 1
+//             }]
+//         })
+//     }
+//     useEffect(() => {
+//         chart()
+//     }, [])
+//
+//     return (
+//         <div>
+//             <Bar data={chartData}/>
+//         </div>
+//     );
+// };
 
+
+// const ChartDataUSD = () => {
+//     const [chartData, setChartData] = useState({});
+//     let arrName = [];
+//     let arrCurrency = []
+//     const chart = () => {
+//
+//         fetch("https://api.nbp.pl/api/exchangerates/tables/a/", {
+//             method: "GET"
+//         })
+//             .then(res => res.json())
+//             .then(res => {
+//                 for (const el of res[0].rates) {
+//                     arrName.push(el.code);
+//                     arrCurrency.push(el.mid)
+//                 }
+//                 setChartData({
+//                     labels: arrName,
+//                     datasets: [{
+//                         label: 'Aktualnie obowiązujący kurs walut obcych',
+//                         data: arrCurrency,
+//                         backgroundColor: 'rgba(80,150,217,0.2)',
+//                         borderWidth: 1
+//                     }]
+//                 })
+//             })
+//             .catch(error => console.log(error))
+//     };
+//     console.log(arrName,arrCurrency);
+//     // setChartData({
+//     //     labels: arrName,
+//     //     datasets: [{
+//     //         label: 'Wartość walut',
+//     //         data: arrCurrency,
+//     //         backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+//     //         borderWidth: 1
+//     //     }]
+//     // })
+//     useEffect(() => {
+//         chart()
+//     }, []);
+//     return (
+//         <div>
+//             <Bar data={chartData}/>
+//         </div>
+//     )
+// };
+const Footer = () => {
+
+    return (
+        <div className='footer'>
+            <footer> &copy; Monika Oleksiak</footer>
+            <footer style={{fontSize:'10px'}}> Dane pobrane z https://api.nbp.pl/</footer>
+        </div>
+    )
+};
 const App = () => {
-    return (<> <Header/><NbpTodayUsdChfEur/><MonthCurrency/><Notes/><NbpToday/>< ChartData/><Pko/><Pko1/></>)
+    return (<> <Header/><NbpTodayUsdChfEur/><MonthCurrency/><Notes/><NbpToday/><Pko/><Pko1/><Footer/></>)
 };
 ReactDOM.render(<App/>, document.getElementById("app"));
 
