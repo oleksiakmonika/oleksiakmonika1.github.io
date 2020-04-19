@@ -80,26 +80,26 @@ const NbpTodayUsdChfEur = () => {
         <div className='columns'>
             <div className='usd'>
 
-                <h2 style={{ width: "300px", marginLeft:'50px'}}>
-                    Kurs USD z dziś {currency} {currency !== null ? "nie podano" : "zł"}
+                <h2 style={{ width: "400px", marginLeft:'100px'}}>
+                    Kurs USD z dziś {currency} {currency !== null ? "- nie podano" : "zł"}
                     {/*Kurs USD z dziś {currency} zł*/}
                 </h2>
-                <p style={{fontSize:'10px', marginLeft:'50px'}}>Kurs jest wyświetlany w dni robocze</p>
+
 
             </div>
             <div className='chf'>
-                <h2 style={{ width: "300px", marginLeft:'50px'}}>
-                    Kurs CHF z dziś {currency} {currency !== null ? "nie podano" : "zł"}
+                <h2 style={{ width: "400px", marginLeft:'100px'}}>
+                    Kurs CHF z dziś {currency} {currency !== null ? "- nie podano" : "zł"}
                     {/*Kurs USD z dziś {currency} zł*/}
                 </h2>
-                <p style={{fontSize:'10px', marginLeft:'50px'}}>Kurs jest wyświetlany w dni robocze</p>
+
             </div>
             <div className='eur'>
-                <h2 style={{ width: "300px", marginLeft:'50px'}}>
-                    Kurs CHF z dziś {currency} {currency !== null ? "nie podano" : "zł"}
+                <h2 style={{ width: "400px", marginLeft:'100px'}}>
+                    Kurs EUR z dziś {currency} {currency !== null ? "- nie podano" : "zł"}
                     {/*Kurs USD z dziś {currency} zł*/}
                 </h2>
-                <p style={{fontSize:'10px', marginLeft:'50px'}}>Kurs jest wyświetlany w dni robocze</p>
+
             </div>
         </div>
     );
@@ -215,15 +215,15 @@ const MonthCurrency = () => {
     }, []);
 
     return (
-        <div className='columns'>
-            <div><h2 style={{ marginLeft:'100px'}} className='usd'>Średni kurs NBP z ostatnich 30 dni</h2>
+        <div className='columns' >
+            <div><h2 style={{ marginLeft:'70px'}} className='usd'>Średni kurs NBP z ostatnich 30 dni</h2>
                 <ul>
                     {
                         currency.map((e, i) => {
                             return <li className='usd' style={{
-                                listStyleType: "none", paddingLeft: '10px'
+                                listStyleType: "none", paddingLeft: '30px'
                             }}
-                                       key={i}>Dnia {e.effectiveDate}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{e.mid} zł </li>
+                                       key={i}>Dnia {e.effectiveDate}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{e.mid} zł </li>
                         })
                     }
                 </ul>
@@ -232,15 +232,15 @@ const MonthCurrency = () => {
                 </div>
             </div>
             <div>
-                <h2  style={{ marginLeft:'100px'}} className='chf'>Średni kurs NBP z ostatnich 30 dni</h2>
+                <h2  style={{ marginLeft:'70px'}} className='chf'>Średni kurs NBP z ostatnich 30 dni</h2>
 
                 <ul>
                     {
                         currency.map((e, i) => {
                             return <li className='chf' style={{
-                                listStyleType: "none", paddingLeft: '10px'
+                                listStyleType: "none", paddingLeft: '20px'
                             }}
-                                       key={i}>Dnia {e.effectiveDate}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {e.mid} zł </li>
+                                       key={i}>Dnia {e.effectiveDate}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {e.mid} zł </li>
                         })
                     }
                 </ul>
@@ -249,15 +249,15 @@ const MonthCurrency = () => {
                 </div>
             </div>
             <div>
-                <h2 style={{ marginLeft:'100px'}}  className='eur'>Średni kurs NBP z ostatnich 30 dni</h2>
+                <h2 style={{ marginLeft:'70px'}}  className='eur'>Średni kurs NBP z ostatnich 30 dni</h2>
 
                 <ul>
                     {
                         currency.map((e, i) => {
                             return <li className='eur' style={{
-                                listStyleType: "none", paddingLeft: '10px'
+                                listStyleType: "none", paddingLeft: '20px'
                             }}
-                                       key={i}>Dnia {e.effectiveDate}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {e.mid} zł</li>
+                                       key={i}>Dnia {e.effectiveDate}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {e.mid} zł</li>
                         })
                     }
                 </ul>
@@ -381,57 +381,57 @@ const NbpToday = () => {
     )
 };
 
-
-const Pko = () => {
-    const [currency, setCurrency] = useState([]);
-    const loadCurrency = () => {
-        fetch("https://cors-anywhere.herokuapp.com/https://www.pkobp.pl/waluty/?chart_data&code=CHF&range=5&date=14-04-2020", {
-            headers: {
-                "Origin": "http://localhost:3000"
-            }
-        })
-            .then(res => res.json())
-            .then(res => setCurrency(res.data[0]))
-            .catch(error => console.log(error))
-    };
-    useEffect(() => {
-        loadCurrency()
-    }, []);
-
-    return (
-        <div><h3>dane z PKO BP</h3>
-
-            <h2> {Object.keys(currency)[0]}</h2>
-            <ul>
-                {Object.keys(currency).map((e, i) => {
-                    return <li className='all' style={{
-                        listStyleType: "none",
-                        fontSize: '16px',
-                    }} key={i}> z dnia {currency[e][2][0]}:{currency[e][2][1]}
-                    </li>
-                })
-                }
-            </ul>
-        </div>
-    )
-};
-
-const Pko1 = () => {
-    fetch("https://cors-anywhere.herokuapp.com/https://www.pkobp.pl/waluty/?chart_data&code=USD&range=5&date=14-04-2020", {
-        headers: {
-            "Origin": "http://localhost:3000"
-        }
-    })
-        .then(res => res.json())
-        .then(json => {
-            console.log('Dane z API: ', json);
-        });
-    return (
-        <>
-            <h1>.</h1>
-        </>
-    )
-};
+//
+// const Pko = () => {
+//     const [currency, setCurrency] = useState([]);
+//     const loadCurrency = () => {
+//         fetch("https://cors-anywhere.herokuapp.com/https://www.pkobp.pl/waluty/?chart_data&code=CHF&range=5&date=14-04-2020", {
+//             headers: {
+//                 "Origin": "http://localhost:3000"
+//             }
+//         })
+//             .then(res => res.json())
+//             .then(res => setCurrency(res.data[0]))
+//             .catch(error => console.log(error))
+//     };
+//     useEffect(() => {
+//         loadCurrency()
+//     }, []);
+//
+//     return (
+//         <div><h3>dane z PKO BP</h3>
+//
+//             <h2> {Object.keys(currency)[0]}</h2>
+//             <ul>
+//                 {Object.keys(currency).map((e, i) => {
+//                     return <li className='all' style={{
+//                         listStyleType: "none",
+//                         fontSize: '16px',
+//                     }} key={i}> z dnia {currency[e][2][0]}:{currency[e][2][1]}
+//                     </li>
+//                 })
+//                 }
+//             </ul>
+//         </div>
+//     )
+// };
+//
+// const Pko1 = () => {
+//     fetch("https://cors-anywhere.herokuapp.com/https://www.pkobp.pl/waluty/?chart_data&code=USD&range=5&date=14-04-2020", {
+//         headers: {
+//             "Origin": "http://localhost:3000"
+//         }
+//     })
+//         .then(res => res.json())
+//         .then(json => {
+//             console.log('Dane z API: ', json);
+//         });
+//     return (
+//         <>
+//             <h1>.</h1>
+//         </>
+//     )
+// };
 // const ChartData = () => {
 //     const [chartData, setChartData] = useState({});
 //     const chart = () => {
@@ -528,7 +528,7 @@ const Footer = () => {
     )
 };
 const App = () => {
-    return (<> <Header/><NbpTodayUsdChfEur/><MonthCurrency/><Notes/><NbpToday/><Pko/><Pko1/><Footer/></>)
+    return (<> <Header/><NbpTodayUsdChfEur/><MonthCurrency/><Notes/><NbpToday/><Footer/></>)
 };
 ReactDOM.render(<App/>, document.getElementById("app"));
 
