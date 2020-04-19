@@ -1,9 +1,10 @@
 # Strona renderująca aktualny kurs walut
 
-## Obsługa
 
 > **Strona wyświetla średni kurs walut dolara amerykańskiego, franka szwajcarskiego i euro z ostatnich 30 dni roboczych i wizualizuje to na wykresie liniowym.
->Strona również wyświetla aktualny, średni kurs podstawowych walut   (THB - bat (Tajlandia)
+>
+>Strona wyświetla aktualny, średni kurs podstawowych walut   
+>>THB - bat (Tajlandia)
                                                                       USD - dolar amerykański
                                                                       AUD - dolar australijski
                                                                       HKD - dolar Hongkongu
@@ -37,13 +38,15 @@
                                                                       INR - rupia indyjska
                                                                       KRW - won południowokoreański
                                                                       CNY - yuan renminbi (Chiny)
-                                                                      XDR - SDR (MFW) i wizualizuje to na wykresie słupkowym.
+                                                                      XDR - SDR (MFW)
+>
+>i wizualizuje to na wykresie słupkowym.
 >
 >Dane są pobierane z https://api.nbp.pl.
 >
 >Na stronie można sporządzić notatkę, która jest przechowywana w local storage.
 >
->Wykorzystana technologia to React Hooks.
+>Wykorzystana technologia to React Hooks. Do sporządzenia wykresu zastosowano react-chartjs-2.
 > **
 
 Link do strony:

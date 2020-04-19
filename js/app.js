@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom";
 import {Bar, Line} from 'react-chartjs-2'
-require('../scss/main.scss');
 
+require('../scss/main.scss');
 
 
 const Header = () => {
@@ -80,7 +80,7 @@ const NbpTodayUsdChfEur = () => {
         <div className='columns'>
             <div className='usd'>
 
-                <h2 style={{ width: "400px", marginLeft:'100px'}}>
+                <h2 style={{width: "400px", marginLeft: '100px'}}>
                     Kurs USD z dziś {currency} {currency !== null ? "- nie podano" : "zł"}
                     {/*Kurs USD z dziś {currency} zł*/}
                 </h2>
@@ -88,14 +88,14 @@ const NbpTodayUsdChfEur = () => {
 
             </div>
             <div className='chf'>
-                <h2 style={{ width: "400px", marginLeft:'100px'}}>
+                <h2 style={{width: "400px", marginLeft: '100px'}}>
                     Kurs CHF z dziś {currency} {currency !== null ? "- nie podano" : "zł"}
                     {/*Kurs USD z dziś {currency} zł*/}
                 </h2>
 
             </div>
             <div className='eur'>
-                <h2 style={{ width: "400px", marginLeft:'100px'}}>
+                <h2 style={{width: "400px", marginLeft: '100px'}}>
                     Kurs EUR z dziś {currency} {currency !== null ? "- nie podano" : "zł"}
                     {/*Kurs USD z dziś {currency} zł*/}
                 </h2>
@@ -112,10 +112,10 @@ const MonthCurrency = () => {
     const [chartData, setChartData] = useState({});
     const [chartData1, setChartData1] = useState({});
     const [chartData2, setChartData2] = useState({});
-    let arrName = [];
-    let arrCurrency = []
-    const chart = () => {
 
+    const chart = () => {
+        let arrName = [];
+        let arrCurrency = []
         fetch("https://api.nbp.pl/api/exchangerates/rates/a/usd/last/30/", {
             method: "GET"
         })
@@ -138,7 +138,8 @@ const MonthCurrency = () => {
             .catch(error => console.log(error))
     };
     const chart1 = () => {
-
+        let arrName = [];
+        let arrCurrency = []
         fetch("https://api.nbp.pl/api/exchangerates/rates/a/chf/last/30/", {
             method: "GET"
         })
@@ -161,6 +162,8 @@ const MonthCurrency = () => {
             .catch(error => console.log(error))
     };
     const chart2 = () => {
+        let arrName = [];
+        let arrCurrency = []
         fetch("https://api.nbp.pl/api/exchangerates/rates/a/eur/last/30/", {
             method: "GET"
         })
@@ -193,7 +196,7 @@ const MonthCurrency = () => {
     };
 
     const loadCurrency1 = () => {
-        fetch("https://api.nbp.pl/api/exchangerates/rates/a/eur/last/30/", {
+        fetch("https://api.nbp.pl/api/exchangerates/rates/a/chf/last/30/", {
             method: "GET"
         })
             .then(res => res.json())
@@ -202,7 +205,7 @@ const MonthCurrency = () => {
     };
 
     const loadCurrency2 = () => {
-        fetch("https://api.nbp.pl/api/exchangerates/rates/a/chf/last/30/", {
+        fetch("https://api.nbp.pl/api/exchangerates/rates/a/eur/last/30/", {
             method: "GET"
         })
             .then(res => res.json())
@@ -215,53 +218,76 @@ const MonthCurrency = () => {
     }, []);
 
     return (
-        <div className='columns' >
-            <div><h2 style={{ marginLeft:'70px'}} className='usd'>Średni kurs NBP z ostatnich 30 dni</h2>
+        <div className='columns'>
+            <div><h2 style={{marginLeft: '70px'}} className='usd'>Średni kurs NBP z ostatnich 30 dni</h2>
                 <ul>
                     {
                         currency.map((e, i) => {
                             return <li className='usd' style={{
-                                listStyleType: "none", paddingLeft: '30px'
+                                listStyleType: "none",
+                                padding: '0 20px',
+                                display: "flex",
+                                justifyContent: "space-between",
+                                width:'300px',
+                                marginLeft: '40px'
                             }}
-                                       key={i}>Dnia {e.effectiveDate}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{e.mid} zł </li>
+                                       key={i}>
+                                <div>Dnia {e.effectiveDate}</div>
+                                <div>{e.mid} zł</div>
+                                 </li>
                         })
                     }
                 </ul>
-                <div style={{background:'lightgrey', margin:'50px', padding:'20px', marginLeft:'80px'}}>
+                <div style={{background: 'lightgrey', margin: '50px', padding: '20px', marginLeft: '80px'}}>
                     <Line data={chartData}/>
                 </div>
             </div>
             <div>
-                <h2  style={{ marginLeft:'70px'}} className='chf'>Średni kurs NBP z ostatnich 30 dni</h2>
+                <h2 style={{marginLeft: '70px'}} className='chf'>Średni kurs NBP z ostatnich 30 dni</h2>
 
                 <ul>
                     {
-                        currency.map((e, i) => {
+                        currency1.map((e, i) => {
                             return <li className='chf' style={{
-                                listStyleType: "none", paddingLeft: '20px'
+                                listStyleType: "none",
+                                padding: '0 20px',
+                                display: "flex",
+                                justifyContent: "space-between",
+                                width:'300px',
+                                marginLeft: '40px'
                             }}
-                                       key={i}>Dnia {e.effectiveDate}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {e.mid} zł </li>
+                                       key={i}>
+                                <div>Dnia {e.effectiveDate}</div>
+                                <div>{e.mid} zł</div>
+                            </li>
                         })
                     }
                 </ul>
-                <div style={{background:'lightgrey', margin:'50px', padding:'20px', marginLeft:'80px'}}>
+                <div style={{background: 'lightgrey', margin: '50px', padding: '20px', marginLeft: '80px'}}>
                     <Line data={chartData1}/>
                 </div>
             </div>
             <div>
-                <h2 style={{ marginLeft:'70px'}}  className='eur'>Średni kurs NBP z ostatnich 30 dni</h2>
-
+                <h2 style={{marginLeft: '70px'}} className='eur'>Średni kurs NBP z ostatnich 30 dni</h2>
                 <ul>
                     {
-                        currency.map((e, i) => {
+                        currency2.map((e, i) => {
                             return <li className='eur' style={{
-                                listStyleType: "none", paddingLeft: '20px'
+                                listStyleType: "none",
+                                padding: '0 20px',
+                                display: "flex",
+                                justifyContent: "space-between",
+                                width:'300px',
+                                marginLeft: '40px'
                             }}
-                                       key={i}>Dnia {e.effectiveDate}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {e.mid} zł</li>
+                                       key={i}>
+                                <div>Dnia {e.effectiveDate}</div>
+                                <div>{e.mid} zł</div>
+                            </li>
                         })
                     }
                 </ul>
-                <div style={{background:'lightgrey', margin:'50px', padding:'20px', marginLeft:'80px'}}>
+                <div style={{background: 'lightgrey', margin: '50px', padding: '20px', marginLeft: '80px'}}>
                     <Line data={chartData2}/>
                 </div>
             </div>
@@ -334,49 +360,65 @@ const NbpToday = () => {
             .catch(error => console.log(error))
     };
     useEffect(() => {
-       loadCurrency(), chart()
+        loadCurrency(), chart()
     }, []);
 
     return (
-        <div className='today'><h2 style={{padding:'20px', textAlign:'center'}}>Aktualnie obowiązujący kurs średni walut</h2>
+        <div className='today'><h2 style={{padding: '20px', textAlign: 'center'}}>Aktualnie obowiązujący średni kurs NBP
+            walut</h2>
             <div className='columns'>
-            <div className='pairs'>
-                <ul>
-                    {currency.map((e, i) => {
-                        return <li className='all' style={{
-                            listStyleType: "none",
-                            fontSize: '16px',
-                            // textAlign: 'right'
-                            // border: '1px solid grey',
-                            // height: '50px',
-                            // width: "300px"
-                        }} key={i}>{e.code} - {e.currency}
-                            {/*<button> Sprawdz kurs waluty {e.currency} z ostatnich 10 dni</button>*/}
-                        </li>
-                    })
-                    }
-                </ul>
-                <ul>
-                    {currency.map((e, i) => {
-                        return <li className='all' style={{
-                            listStyleType: "none",
-                            fontSize: '16px',
-                            // textAlign: 'right'
-                            // border: '1px solid grey',
-                            // height: '50px',
-                            // width: "300px"
-                        }} key={i}>{e.mid} zł
-                            {/*<button> Sprawdz kurs waluty {e.currency} z ostatnich 10 dni</button>*/}
-                        </li>
-                    })
-                    }
-                </ul>
+                <div className='pairs'>
+                {/*    <ul>*/}
+                {/*        {currency.map((e, i) => {*/}
+                {/*            return <li className='all' style={{*/}
+                {/*                listStyleType: "none",*/}
+                {/*                fontSize: '16px',*/}
+                {/*            }} key={i}>{e.code} - {e.currency}*/}
+                {/*            </li>*/}
+                {/*        })*/}
+                {/*        }*/}
+                {/*    </ul>*/}
+                {/*    <ul>*/}
+                {/*        {currency.map((e, i) => {*/}
+                {/*            return <li className='all' style={{*/}
+                {/*                listStyleType: "none",*/}
+                {/*                fontSize: '16px',*/}
+                {/*            }} key={i}>{e.mid} zł*/}
+                {/*            </li>*/}
+                {/*        })*/}
+                {/*        }*/}
+                {/*    </ul>*/}
+                    <ul>
+                        {
+                            currency.map((e, i) => {
+                                return <li className='all' style={{
+                                    listStyleType: "none",
+                                    padding: '0 10px',
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    width:'400px'
+                                }}
+                                           key={i}>
+                                    <div>{e.code} - {e.currency}</div>
+                                    <div>{e.mid} zł</div>
+                                </li>
+                            })
+                        }
+                    </ul>
 
-            </div>
-            <div className='wykres' style={{background:'lightgrey', margin:'50px', padding:'20px', marginLeft:'80px', height:'250px', width:'500px',marginTop:'200px'}}>
-                <Bar data={chartData}/>
-            </div>
                 </div>
+                <div className='wykres' style={{
+                    background: 'lightgrey',
+                    margin: '50px',
+                    padding: '20px',
+                    marginLeft: '80px',
+                    height: '250px',
+                    width: '500px',
+                    marginTop: '200px'
+                }}>
+                    <Bar data={chartData}/>
+                </div>
+            </div>
         </div>
     )
 };
@@ -523,7 +565,7 @@ const Footer = () => {
     return (
         <div className='footer'>
             <footer> &copy; Monika Oleksiak</footer>
-            <footer style={{fontSize:'10px'}}> Dane pobrane z https://api.nbp.pl/</footer>
+            <footer style={{fontSize: '10px'}}> Dane pobrane z https://api.nbp.pl/</footer>
         </div>
     )
 };
