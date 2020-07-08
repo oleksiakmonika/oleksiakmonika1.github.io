@@ -1,0 +1,48 @@
+.li{
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 10px;
+}
+
+.chart {
+  background: $white;
+  margin: 20px;
+  padding: 10px
+}
+
+.container2 {
+  margin-top: 80px;
+  background-color: $lightgrey;
+  text-align: center;
+  color: $darkgrey
+}
+
+li:nth-child(2n+1) {
+  background-color: $darkgrey;
+  color: $white
+}
+.usd2 {
+  background-image: url('../img/american-flag-2144392_1280.png');
+  width: 32px;
+  height: 20px;
+  background-size: cover;
+  margin: 0;
+}
+
+.chf2 {
+  background-image: url('../img/swiss-flag-3109178_1280.png');
+  width: 32px;
+  height: 20px;
+  background-size: cover;
+  margin: 0px;
+
+}
+
+.eur2 {
+  background-image: url('../img/flag-2313980_1280.png');
+  width: 32px;
+  height: 20px;
+  background-size: cover;
+  margin: 0px;
+}

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Line} from "react-chartjs-2";
 
 
-const MonthCurrency = () => {
+const Month = () => {
     const [currency, setCurrency] = useState([]);
     const [currency1, setCurrency1] = useState([]);
     const [currency2, setCurrency2] = useState([]);
@@ -117,10 +117,11 @@ const MonthCurrency = () => {
     return (
 
         <div className='container2'><h2>Średni kurs NBP z 30 dni roboczych</h2>
+
             <div className='row2'>
 
                 <div className='chart'>
-
+                    <div className='usd2'>  </div>
                     <Line data={chartData}/>
                 </div>
 
@@ -142,7 +143,7 @@ const MonthCurrency = () => {
 
             <div className='row2'>
 
-                <div className='chart'>
+                <div className='chart'><div className='chf2'>   </div>
                     <Line data={chartData1}/>
                 </div>
 
@@ -160,8 +161,11 @@ const MonthCurrency = () => {
                     </ul>
                 </div>
             </div>
+
             <div className='row2'>
+
                 <div className='chart'>
+                    <div className='eur2'></div>
                     <Line data={chartData2}/>
                 </div>
                 <div className='ul'>
@@ -181,4 +185,4 @@ const MonthCurrency = () => {
         </div>
     )
 };
-export default MonthCurrency;
+export default Month;

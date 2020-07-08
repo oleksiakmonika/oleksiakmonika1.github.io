@@ -1,15 +1,16 @@
 import React, {useEffect, useState} from 'react';
+import {Link} from "react-router-dom";
 
-const NbpTodayUsdChfEur = () => {
+const TodayUsdChfEur = () => {
     const [currency, setCurrency] = useState(' ');
     const [currency1, setCurrency1] = useState(' ');
     const [currency2, setCurrency2] = useState(' ');
     const [date, setDate] = useState(new Date());
-    useEffect(() => {
-        setInterval(() => {
-            setDate(new Date())
-        }, 1000)
-    }, []);
+    // useEffect(() => {
+    //     setInterval(() => {
+    //         setDate(new Date())
+    //     }, 1000)
+    // }, []);
     const loadCurrency = () => {
         fetch("https://api.nbp.pl/api/exchangerates/rates/a/usd/", {
             method: "GET"
@@ -60,27 +61,29 @@ const NbpTodayUsdChfEur = () => {
     loadCurrency2();
 
     return (
+
         <div className='container1'>
+
             <h2 className='header1'> Średni kurs NBP z dnia {date.toLocaleDateString()}</h2>
-            <div className='columns1'>
+            <div className='row1'>
 
                 <h2 className='currencyToday'>
 
-                    USD {currency} {currency == null ? "- nie podano" : "zł"}
+                     <div className='usd'>  </div> USD {currency} {currency == null ? "- nie podano" : "zł"}
                     {/*Kurs USD z dziś {currency} zł*/}
                 </h2>
 
 
                 <h2 className='currencyToday'>
 
-                    CHF {currency1} {currency1 == null ? "- nie podano" : "zł"}
+                    <div className='chf'>   </div>CHF {currency1} {currency1 == null ? "- nie podano" : "zł"}
                     {/*Kurs USD z dziś {currency} zł*/}
                 </h2>
 
 
                 <h2 className='currencyToday'>
 
-                    EUR {currency2} {currency2 == null ? "- nie podano" : "zł"}
+                     <div className='eur'></div>EUR {currency2} {currency2 == null ? "- nie podano" : "zł"}
                     {/*Kurs USD z dziś {currency} zł*/}
                 </h2>
 
@@ -89,4 +92,4 @@ const NbpTodayUsdChfEur = () => {
         </div>
     );
 };
-export default NbpTodayUsdChfEur;
+export default TodayUsdChfEur;

@@ -1,53 +1,15 @@
+@import 'settings/colors';
+@import 'settings/fonts';
+@import 'settings/media';
+@import 'elements/footer';
+@import 'elements/header';
+@import 'elements/month';
+@import 'elements/today';
+@import 'elements/todayUsdChfEur';
+@import 'elements/notes';
+@import 'elements/all';
+@import 'generic/reset';
 
 
 
-body {
-  background-color: lightgrey;
-}
 
-//.chf {
-//  background-color: #0f7595;
-//  color: white;
-//}
-//
-//.usd {
-//  display: flex;
-//  justify-content: space-between;
-//}
-//
-//.eur {
-//  background-color: #956bff;
-//  color: white;
-//}
-.today{
-  background-color:#264c95 ;
-  color: white;
-}
-
-.columns {
-  display: flex;
-  justify-content: space-around;
-  background-color: #264c95;
-  color: white;
-}
-
-.header{
-  display: flex;
-  justify-content: space-between;
-  margin: 30px;
-}
-.textArea{
-  width: 97.5vw;
-  height: 200px;
-  padding: 20px 0 20px 20px;
-  font-family: "Open Sans";
-  font-size: 16px;
-}
-
-li:nth-child(2n+1){
-  background-color: #617f95;
-}
-.pairs{
-  display: flex;
-}
-.wykres{}

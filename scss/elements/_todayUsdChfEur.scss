@@ -1,0 +1,47 @@
+.row1 {
+  margin: 10px 20% 2px 20%;
+  color: $white;
+}
+
+.header1 {
+  text-align: center;
+  color: $darkgrey
+}
+
+.container1 {
+  margin-top: 40px;
+  background-color: $lightgrey;
+  margin-bottom: 40px;
+
+}
+
+.currencyToday {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.usd {
+  background-image: url('../img/american-flag-2144392_1280.png');
+  width: 16px;
+  height: 10px;
+  background-size: cover;
+  margin: 0 10px;
+}
+
+.chf {
+  background-image: url('../img/swiss-flag-3109178_1280.png');
+  width: 16px;
+  height: 10px;
+  background-size: cover;
+  margin: 0 10px;
+}
+
+.eur {
+  background-image: url('../img/flag-2313980_1280.png');
+  width: 16px;
+  height: 10px;
+  background-size: cover;
+  margin: 0 10px;
+}
+

@@ -9,11 +9,12 @@ const customStyles = {
         right: 'auto',
         bottom: 'auto',
         marginRight: '-50%',
+        marginTop: '1%',
         transform: 'translate(-50%, -50%)'
     }
 };
 Modal.setAppElement('#app')
-const NbpToday = () => {
+const Today = () => {
     const [currency, setCurrency] = useState([]);
     const [chartData, setChartData] = useState({});
     let arrName = [];
@@ -28,7 +29,6 @@ const NbpToday = () => {
     }
 
     function afterOpenModal() {
-        // references are now sync'd and can be accessed.
         subtitle.style.color = '#f00';
     }
 
@@ -58,9 +58,9 @@ const NbpToday = () => {
                 setChartData({
                     labels: arrName,
                     datasets: [{
-                        label: 'Aktualnie obowiązujący kurs walut obcych',
+                        label: 'Kurs podstawowych walut z dziś',
                         data: arrCurrency,
-                        backgroundColor: 'rgba(80,150,217,0.2)',
+                        backgroundColor: 'rgba(60,79,128,0.2)',
                         borderWidth: 1
                     }]
                 })
@@ -73,7 +73,7 @@ const NbpToday = () => {
 
     return (
         <div className='container3'>
-            <div className='row2'>
+            <div className='row3'>
 
                 <div className='ul'>
                     <ul>
@@ -87,28 +87,26 @@ const NbpToday = () => {
                         }
                     </ul>
                 </div>
-                <div className='chart3'>
-                    <Bar data={chartData}/>
+
                     <div>
-                        <button onClick={openModal}>Open Modal</button>
+                        <button className='chart3' onClick={openModal}><Bar data={chartData}/></button>
                         <Modal
                             isOpen={modalIsOpen}
                             onAfterOpen={afterOpenModal}
                             onRequestClose={closeModal}
                             style={customStyles}
-                            contentLabel="Example Modal"
                         >
-
-                            <h2 ref={_subtitle => (subtitle = _subtitle)}>Kurs NBP podstawowych walut</h2>
+                            <h2 ref={_subtitle => (subtitle = _subtitle)}> </h2>
                             <div className='subtitle'>
+                                <button onClick={closeModal}> X</button>
                                 <Bar data={chartData}/>
-                                <button onClick={closeModal}>close</button>
                             </div>
                         </Modal>
                     </div>
-                </div>
+
+
             </div>
         </div>
     )
 };
-export default NbpToday;
+export default Today;

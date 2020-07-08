@@ -1,0 +1,19 @@
+.textArea{
+  width: 95vw;
+  height: 80vh;
+  padding: 20px;
+  margin: 20px ;
+  font-family: $font-base;
+  font-size: 16px;
+  background: $yellow;
+  border: none
+}
+.clear{
+  color: $darkgrey;
+  text-decoration: none;
+  background-color: #617f95;
+  border-radius: 24px;
+  padding: 10px;
+  font-family: $font-base;
+  margin: 0 0 0 42% ;
+}

@@ -1,0 +1,86 @@
+@media(max-width: 350px) {.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $darkgrey;
+  color: $white;
+  padding: 10px
+}
+
+}
+
+@media(min-width: 1024px) {
+  .row1 {
+    background-color: $darkgrey;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid $darkgrey;
+    text-align: center;
+    margin-bottom: 2px;
+    padding: 10px;
+    border-radius: 10px 0 10px 0;
+  }
+  .row2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 40px;
+    padding: 0;
+  }
+  .row3 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 40px;
+    padding: 0;
+  }
+  .li {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .ul {
+    padding: 0;
+    margin: 0 1px;
+    min-width: 200px;
+    list-style-type: none;
+  }
+
+  .chart {
+    background: $white;
+    margin: 0;
+    padding: 0;
+    width: 800px;
+    height: 420px;
+    align-items: center;
+  }
+  .chart3 {
+    background: $white;
+    margin: 40px;
+    padding: 10px;
+    width: 500px;
+    height: 250px;
+  }
+}
+
+@media(max-width: 1024px) {
+  .currencyToday {
+    text-align: center;
+    margin-bottom: 2px;
+    padding: 5px 0 5px 0;
+    background-color: $darkgrey;
+    border-radius: 10px 0 10px 0;
+  }
+  .ul {
+    padding: 10px;
+    margin: 0 19%;
+    list-style-type: none;
+  }
+  .chart3 {
+    background: $white;
+    margin: 20px;
+    padding: 10px;
+    width: 95%;
+    height: 60%;
+  }
+}
