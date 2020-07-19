@@ -1,14 +1,64 @@
-@media(max-width: 350px) {.header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $darkgrey;
-  color: $white;
-  padding: 10px
+@media(max-width: 350px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $darkgrey;
+    color: $white;
+  }
+}
+@media(max-width: 800px) {
+  body{
+    width: max-content;
+}
+  .subtitle {
+    display: none;
+  }
+  .currencyToday {
+    text-align: center;
+    margin-bottom: 2px;
+    padding: 5px 0 5px 0;
+    background-color: $darkgrey;
+    border-radius: 10px 0 10px 0;
+  }
+  .ul {
+    padding: 10px;
+    margin: 0 19%;
+    list-style-type: none;
+    min-width: 200px;
+  }
+  .chart3 {
+    background: $white;
+    margin: 40px;
+    padding: 10px;
+    width: 95%;
+    height: 60%;
+  }
 }
 
-}
+@media(max-width: 1024px) {
 
+  .currencyToday {
+    text-align: center;
+    margin-bottom: 2px;
+    padding: 5px 0 5px 0;
+    background-color: $darkgrey;
+    border-radius: 10px 0 10px 0;
+  }
+  .ul {
+    padding: 10px;
+    margin: 0 19%;
+    list-style-type: none;
+    min-width: 200px;
+  }
+  .chart3 {
+    background: $white;
+    margin: 20px;
+    padding: 10px;
+    width: 95%;
+    height: 60%;
+  }
+}
 @media(min-width: 1024px) {
   .row1 {
     background-color: $darkgrey;
@@ -60,27 +110,5 @@
     padding: 10px;
     width: 500px;
     height: 250px;
-  }
-}
-
-@media(max-width: 1024px) {
-  .currencyToday {
-    text-align: center;
-    margin-bottom: 2px;
-    padding: 5px 0 5px 0;
-    background-color: $darkgrey;
-    border-radius: 10px 0 10px 0;
-  }
-  .ul {
-    padding: 10px;
-    margin: 0 19%;
-    list-style-type: none;
-  }
-  .chart3 {
-    background: $white;
-    margin: 20px;
-    padding: 10px;
-    width: 95%;
-    height: 60%;
   }
 }

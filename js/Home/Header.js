@@ -14,7 +14,7 @@ const Header = () => {
         <div className='header'>
             < div className='headerInside'> Aktualne waluty NBP</div>
             <div className='noteDiv'>
-                <li className='note'><Link className="liNote"to='/note'>Notatka</Link></li>
+                <button className='note'><Link className="liNote"to='/note'>Notatka</Link></button>
             </div>
 
             {/*<div className='headerInside'> {date.toLocaleTimeString()}</div>*/}

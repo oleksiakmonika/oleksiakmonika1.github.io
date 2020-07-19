@@ -89,7 +89,7 @@ const Today = () => {
                 </div>
 
                     <div>
-                        <button className='chart3' onMouseEnter={openModal}><Bar data={chartData}/></button>
+                        <button className='chart3' onMouseOver={openModal}><Bar data={chartData}/></button>
                         <Modal
                             isOpen={modalIsOpen}
                             onAfterOpen={afterOpenModal}
@@ -103,8 +103,6 @@ const Today = () => {
                             </div>
                         </Modal>
                     </div>
-
-
             </div>
         </div>
     )
