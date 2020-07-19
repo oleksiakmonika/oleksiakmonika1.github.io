@@ -5,14 +5,13 @@
     align-items: center;
     background-color: $darkgrey;
     color: $white;
+    width: 100%;
   }
 }
+
 @media(max-width: 800px) {
-  body{
+  body {
     width: max-content;
-}
-  .subtitle {
-    display: none;
   }
   .currencyToday {
     text-align: center;
@@ -29,9 +28,9 @@
   }
   .chart3 {
     background: $white;
-    margin: 40px;
+    margin: 10%;
     padding: 10px;
-    width: 95%;
+    width: 90%;
     height: 60%;
   }
 }
@@ -58,7 +57,14 @@
     width: 95%;
     height: 60%;
   }
+  .chart {
+    margin: 0 10%;
+    padding: 10%;
+    width: 90%;
+    height: 60%;
+  }
 }
+
 @media(min-width: 1024px) {
   .row1 {
     background-color: $darkgrey;

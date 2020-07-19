@@ -12,7 +12,7 @@ const Header = () => {
     return (
 
         <div className='header'>
-            < div className='headerInside'> Aktualne waluty NBP</div>
+            < div className='headerInside'> 1Aktualne waluty NBP</div>
             <div className='noteDiv'>
                 <button className='note'><Link className="liNote"to='/note'>Notatka</Link></button>
             </div>
