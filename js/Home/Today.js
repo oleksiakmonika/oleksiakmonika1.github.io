@@ -87,22 +87,24 @@ const Today = () => {
                         }
                     </ul>
                 </div>
-
-                    <div>
-                        <button className='chart3' onMouseEnter={openModal}><Bar data={chartData}/></button>
-                        <Modal
-                            isOpen={modalIsOpen}
-                            onAfterOpen={afterOpenModal}
-                            onRequestClose={closeModal}
-                            style={customStyles}
-                        >
-                            <h2 ref={_subtitle => (subtitle = _subtitle)}> </h2>
-                            <div className='subtitle'>
-                                <button onClick={closeModal}> X</button>
-                                <Bar data={chartData}/>
-                            </div>
-                        </Modal>
-                    </div>
+                <div className='mobile chart'>
+                    <Bar data={chartData}/>
+                </div>
+                <div className='desktop'>
+                    <button className='chart' onMouseEnter={openModal}><Bar data={chartData}/></button>
+                    <Modal
+                        isOpen={modalIsOpen}
+                        onAfterOpen={afterOpenModal}
+                        onRequestClose={closeModal}
+                        style={customStyles}
+                    >
+                        <h2 ref={_subtitle => (subtitle = _subtitle)}></h2>
+                        <div className='subtitle'>
+                            <button onClick={closeModal}> X</button>
+                            <Bar data={chartData}/>
+                        </div>
+                    </Modal>
+                </div>
             </div>
         </div>
     )

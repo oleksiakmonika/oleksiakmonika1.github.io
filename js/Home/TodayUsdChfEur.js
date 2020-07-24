@@ -1,16 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import {Link} from "react-router-dom";
 
 const TodayUsdChfEur = () => {
     const [currency, setCurrency] = useState(' ');
     const [currency1, setCurrency1] = useState(' ');
     const [currency2, setCurrency2] = useState(' ');
     const [date, setDate] = useState(new Date());
-    // useEffect(() => {
-    //     setInterval(() => {
-    //         setDate(new Date())
-    //     }, 1000)
-    // }, []);
+    useEffect(() => {
+        setInterval(() => {
+            setDate(new Date())
+        }, 1000)
+    }, []);
     const loadCurrency = () => {
         fetch("https://api.nbp.pl/api/exchangerates/rates/a/usd/", {
             method: "GET"
@@ -61,16 +60,14 @@ const TodayUsdChfEur = () => {
     loadCurrency2();
 
     return (
-
         <div className='container1'>
-
-            <h2 className='header1'> Średni kurs NBP z dnia {date.toLocaleDateString()}</h2>
+            <h2 className='header1'> Aktualny średni kurs NBP</h2>
             <div className='row1'>
 
                 <h2 className='currencyToday'>
 
-                     <div className='usd'>  </div> USD {currency} {currency == null ? "- nie podano" : "zł"}
-                    {/*Kurs USD z dziś {currency} zł*/}
+                     <div className='usd'>  </div>
+                    USD {currency} zł
                 </h2>
 
 
