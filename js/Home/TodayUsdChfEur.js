@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-
+import Scroll from '../Nav/Scroll.js';
 const TodayUsdChfEur = () => {
     const [currency, setCurrency] = useState(' ');
     const [currency1, setCurrency1] = useState(' ');
@@ -61,7 +61,7 @@ const TodayUsdChfEur = () => {
 
     return (
         <div className='container1'>
-            <h2 className='header1'> Aktualny średni kurs NBP</h2>
+            <h2 className='header1'> Bieżący średni kurs NBP</h2>
             <div className='row1'>
 
                 <h2 className='currencyToday'>
@@ -73,19 +73,17 @@ const TodayUsdChfEur = () => {
 
                 <h2 className='currencyToday'>
 
-                    <div className='chf'>   </div>CHF {currency1} {currency1 == null ? "- nie podano" : "zł"}
-                    {/*Kurs USD z dziś {currency} zł*/}
+                    <div className='chf'>   </div>
+                    CHF {currency} zł
                 </h2>
 
 
                 <h2 className='currencyToday'>
-
-                     <div className='eur'></div>EUR {currency2} {currency2 == null ? "- nie podano" : "zł"}
-                    {/*Kurs USD z dziś {currency} zł*/}
+                     <div className='eur'></div>
+                     EUR  {currency} zł
                 </h2>
-
-
             </div>
+            <Scroll/>
         </div>
     );
 };

@@ -58,7 +58,7 @@ const Today = () => {
                 setChartData({
                     labels: arrName,
                     datasets: [{
-                        label: 'Kurs podstawowych walut z dziś',
+                        label: 'Bieżący kurs podstawowych walut',
                         data: arrCurrency,
                         backgroundColor: 'rgba(60,79,128,0.2)',
                         borderWidth: 1
@@ -87,11 +87,11 @@ const Today = () => {
                         }
                     </ul>
                 </div>
-                <div className='mobile chart'>
+                <div className='mobile chart3'>
                     <Bar data={chartData}/>
                 </div>
                 <div className='desktop'>
-                    <button className='chart' onMouseEnter={openModal}><Bar data={chartData}/></button>
+                    <button className='chart3' onMouseEnter={openModal}><Bar data={chartData}/></button>
                     <Modal
                         isOpen={modalIsOpen}
                         onAfterOpen={afterOpenModal}

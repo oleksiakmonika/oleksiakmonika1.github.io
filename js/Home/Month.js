@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Line} from "react-chartjs-2";
-
+import {Element} from "react-scroll/modules";
 
 const Month = () => {
     const [currency, setCurrency] = useState([]);
@@ -116,7 +116,8 @@ const Month = () => {
 
     return (
 
-        <div className='container2'><h2>Średni kurs NBP z 30 dni roboczych</h2>
+        <div className='container2'><Element name="test1" className="element">
+        </Element><h2>Średni kurs NBP z 30 dni roboczych</h2>
 
             <div className='row2'>
 
@@ -140,7 +141,8 @@ const Month = () => {
                 </div>
 
             </div>
-
+            <Element name="test2" className="element">
+            </Element>
             <div className='row2'>
 
                 <div className='chart'><div className='chf2'>   </div>
@@ -161,7 +163,8 @@ const Month = () => {
                     </ul>
                 </div>
             </div>
-
+            <Element name="test3" className="element">
+            </Element>
             <div className='row2'>
 
                 <div className='chart'>

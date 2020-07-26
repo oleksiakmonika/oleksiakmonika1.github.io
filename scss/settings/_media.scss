@@ -9,17 +9,6 @@
   }
 }
 
-@media(min-width: 950px) {
-  .mobile {
-    display: none;
-  }
-}
-
-@media(max-width: 950px) {
-  .desktop {
-    display: none;
-  }
-}
 
 @media(max-width: 800px) {
   body {
@@ -75,6 +64,33 @@
     width: 90%;
     height: 60%;
   }
+  .row4 {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 35% 2px 15%;
+    color: $white;
+  }
+  .link {
+    min-width: 200px;
+
+  }
+  .navItem {
+    width: 20px;
+    padding: 0;
+    margin: 0
+  }
+}
+
+@media(min-width: 950px) {
+  .mobile {
+    display: none;
+  }
+}
+
+@media(max-width: 950px) {
+  .desktop {
+    display: none;
+  }
 }
 
 @media(min-width: 1024px) {
@@ -87,6 +103,14 @@
     margin-bottom: 2px;
     padding: 10px;
     border-radius: 10px 0 10px 0;
+  }
+  .row4 {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 20% 2px 20%;
+    color: $white;
+
+
   }
   .row2 {
     display: flex;
@@ -118,15 +142,15 @@
     background: $white;
     margin: 0;
     padding: 0;
-    width: 800px;
-    height: 420px;
+    width: 700px;
+    height: 400px;
     align-items: center;
   }
   .chart3 {
     background: $white;
     margin: 40px;
     padding: 10px;
-    width: 500px;
-    height: 250px;
+    width: 550px;
+    height: 300px;
   }
 }

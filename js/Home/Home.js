@@ -8,11 +8,9 @@ import Footer from './Footer';
 
 const Home = () => (
     <div id='home'>
-
         <Header/>
         <TodayUsdChfEur/>
         <Today/>
-
         <Month/>
         <Footer/>
     </div>

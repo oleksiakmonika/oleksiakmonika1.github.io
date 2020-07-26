@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Home from './Home/Home';
 import {HashRouter as Router, Route, Switch} from 'react-router-dom'
-import Notes from './Notes';
-import NotFound from "./NotFound";
+import Notes from './Nav/Notes';
+import NotFound from "./Nav/NotFound";
 
 require('../scss/main.scss');
 
