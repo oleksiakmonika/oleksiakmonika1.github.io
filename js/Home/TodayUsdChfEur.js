@@ -60,7 +60,7 @@ const TodayUsdChfEur = () => {
     loadCurrency2();
 
     return (
-        <div className='container1'>
+      <>  <div className='container1'>
             <h2 className='header1'> Bieżący średni kurs NBP</h2>
             <div className='row1'>
 
@@ -74,17 +74,17 @@ const TodayUsdChfEur = () => {
                 <h2 className='currencyToday'>
 
                     <div className='chf'>   </div>
-                    CHF {currency} zł
+                    CHF {currency1} zł
                 </h2>
 
 
                 <h2 className='currencyToday'>
                      <div className='eur'></div>
-                     EUR  {currency} zł
+                     EUR  {currency2} zł
                 </h2>
             </div>
-            <Scroll/>
-        </div>
+
+        </div><Scroll/></>
     );
 };
 export default TodayUsdChfEur;
