@@ -87,7 +87,7 @@ const Today = () => {
                         }
                     </ul>
                 </div>
-                <div className='mobile chart3'>
+                <div className='mobile chart'>
                     <Bar data={chartData}/>
                 </div>
                 <div className='desktop'>
