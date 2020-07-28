@@ -9,7 +9,7 @@ ul {
 .container4 {
   margin-top: 0;
   background-color: $lightgrey;
-  margin-bottom: 0;
+  margin-bottom: 40px;
 }
 
 .link {
@@ -19,4 +19,6 @@ ul {
   background-color: $lightgrey;
   color: $blue;
   text-decoration: underline;
+  font-size: 12px;
+  text-align: center;
 }
